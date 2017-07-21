@@ -1,0 +1,5 @@
+<Files ~ "^.*\.([Pp][Hh][Pp])"> #PHP protection
+order allow,deny
+deny from all
+satisfy all
+</Files>
