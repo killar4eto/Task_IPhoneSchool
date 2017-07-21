@@ -4,7 +4,7 @@ Class DB{
 	
 	//connect database
 	public function connect(){
-		$con = mysqli_connect("localhost", "root", "", "updateme");
+		$con = mysqli_connect("localhost", "root", "", "task");
 
 		// Check connection
 		if (mysqli_connect_errno()){
