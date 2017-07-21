@@ -18,8 +18,11 @@
 					<a href="?page=add">Add</a>
 				</li>
 				<li>
+					<a href="?page=all">View All</a>
+				</li>				
+				<li>
 					<a href="?page=profile">Profile</a>
-				</li>
+				</li>				
 				<li>
 					<a href="#" id="signOut">Signout</a>
 				</li>
@@ -35,7 +38,14 @@
 <br/>
 <!-- Page Content -->
 <div class="container">
-
+	
+	<?php
+	
+	if(isset($_GET['page'])){
+		include "$_GET[page].php";
+	}
+	else{
+	?>
 	<div class="row">
 
 		<div class="col-md-3">
@@ -51,18 +61,15 @@
 			<br/>
 			<br/>
 			<br/>
-			
-			<div class="thumbnail">
-				<div class="caption-full">
-					<h4><a href="#">Task name</a>
-					</h4>
-					<p>DESCRIPTION HERE</p>
-				</div>
-			</div>
+			<?php
+				core::viewTask();
+			?>
 
 		</div>
-
-	</div>
+	</div>	
+	<?php	
+		}
+	?>
 
 </div>
 <!-- /.container -->
