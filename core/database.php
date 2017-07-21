@@ -26,7 +26,7 @@ Class DB{
 			//Case fetch_all
 			case "fetch_all":
 				$results = DB::connect()->query($statement);
-				if($results < 1){
+				if($results < "1"){
 					return "No data has been stored.";
 				}
 				else{				

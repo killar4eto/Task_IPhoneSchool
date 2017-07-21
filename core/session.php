@@ -33,9 +33,8 @@ elseif(isset($_GET["set_session"])){
 			$row[] = $key;	
 		}
 		
-		if($email == $row[0]){
+		if($email == @$row['0']){
 			echo "true";
-			
 			$_SESSION["user"] = $email;
 		}
 		else{
