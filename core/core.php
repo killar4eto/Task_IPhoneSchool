@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 //Including the database class (MySQLi)
-include "./core/database.php";
+include "database.php";
 
 //Creating core class
 Class core{
@@ -25,6 +25,45 @@ Class core{
 		}
 		
 	}
+	
+	//error
+	public static function error($type, $desc){
+		
+		switch($type){
+			
+			//Case danger
+			Case "missing":
+				kernel::render("redirect", "pages", "404.html");
+			break;
+			
+			//case host_missing
+			Case "host_connection":
+				echo "<div class='alert alert-warning'>".ucfirst($desc)."</div>";
+			break;
+			
+			//case host_missing
+			Case "db_connection":
+				echo "<div class='alert alert-warning'>".ucfirst($desc)."</div>";
+			break;
+			
+			//case wrong user
+			Case "wrong_user":
+				echo "<div class='alert alert-warning'>".$desc."</div>";
+			break;
+			
+			//case danger
+			Case "danger":
+				echo "<div class='alert alert-danger'>".$desc."</div>";
+			break;
+			
+			//case warning
+			Case "warning":
+				echo "<div class='alert alert-warning'>".$desc."</div>";
+			break;
+			
+		}
+		
+	}	
 }
 
 core::startup();

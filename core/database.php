@@ -3,7 +3,7 @@
 Class DB{
 	
 	//connect database
-	public function connect(){
+	public static function connect(){
 		$con = mysqli_connect("localhost", "root", "", "task");
 
 		// Check connection
@@ -16,7 +16,7 @@ Class DB{
 
 	}
 	
-	public function query($type, $statement, $data){
+	public static function query($type, $statement, $data){
 		
 		$statement = htmlspecialchars($statement);
 		$data = htmlspecialchars($data);
@@ -53,7 +53,7 @@ Class DB{
 			case "fetch_row":
 				$results = DB::connect()->query($statement);
 				
-				if($results < 1){
+				if($results < "1"){
 					return "No data has been stored.";
 				}
 				else{

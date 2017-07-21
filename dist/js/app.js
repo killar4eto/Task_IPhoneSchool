@@ -1,6 +1,16 @@
 //Make sure jQuery has been loaded before app.js
 //Ready document
 $(document).ready(function(){
+	
+  //called when key is pressed in textbox
+  $("#phone").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").html("<div class='alert alert-warning'>Digits Only</div>").show().fadeOut("slow");
+               return false;
+    }
+   });	
 
 	
 	//SignOut check
@@ -9,7 +19,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: "GET",
-			url: "./system/session.php?signout",
+			url: "./core/session.php?signout",
 			success: function(html){    
 				if(html == 'true'){
 					window.location = "./";
@@ -32,7 +42,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: "GET",
-			url: "./system/session.php?set_session",
+			url: "./core/session.php?set_session",
 			data: "email="+email+"&pass="+pass,
 			success: function(html){
 
@@ -60,7 +70,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: "GET",
-			url: "./system/settings.php?profile",
+			url: "./core/settings.php?profile",
 			data: "location="+geo+"&introduction="+intro+"&skills="+skills,
 			success: function(html){
 
