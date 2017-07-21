@@ -61,28 +61,25 @@ $(document).ready(function(){
 
 	});
 
-	//Save settings
-	$("#saveSettings").click(function(h){
+	//Add category
+	$("#addCat").click(function(h){
 		h.preventDefault();
-		var geo = $("#inputLocation").val();
-		var intro = $("#inputIntroduction").val();
-		var skills = $("#inputSkills").val();
+		var name = $("#name").val();
 		
 		$.ajax({
 			type: "GET",
-			url: "./core/settings.php?profile",
-			data: "location="+geo+"&introduction="+intro+"&skills="+skills,
+			url: "./core/add.php?add_cat",
+			data: "name="+name,
 			success: function(html){
 
 				if(html!='error'){
-					$("#settings").before("<div class='alert alert-success'>"+html+"</div>");
+					$(".nav-pills").before("<div class='alert alert-success'>"+html+"</div>");
 					$(".alert").fadeOut(3500, function(){
 					  $(this).remove();
-					  window.location = "./?page=profile";
 					});
 				}
 				else{
-					$("#settings").before("<div class='alert alert-danger'>"+html+"</div>");
+					$(".nav-pills").before("<div class='alert alert-danger'>"+html+"</div>");
 					$(".alert").fadeOut(3500, function(){
 					  $(this).remove();
 					});

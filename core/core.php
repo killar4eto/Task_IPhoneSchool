@@ -15,6 +15,26 @@ Class core{
 		session_start();	
 	}
 	
+	//All categories
+	public static function allCategories(){
+		$results = DB::query("fetch_all", "SELECT * FROM categories", NULL);
+		$total = DB::query("count_all", "SELECT id FROM categories", NULL);
+		
+		if($total < 1){
+			echo "<p class='callout callout-info'>No categories were created yet...</p>";
+		}
+		else{
+			for($i=0;$i<$total;$i++){
+				
+				echo "
+				<option value='".$results[$i]['id']."'>
+					".$results[$i]['name']."
+				</option>
+				";							
+			}			
+		}		
+	}
+	
 	//Show tasks
 	public static function tasks(){
 		$results = DB::query("fetch_all", "SELECT * FROM tasks WHERE obtained_by='".$_SESSION['user']."' ORDER BY created_on DESC", NULL);

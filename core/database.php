@@ -90,6 +90,14 @@ Class DB{
 				DB::connect()->close();
 			break;
 			
+			//Insert case
+			case "insert":
+				$results = DB::connect()->query($statement);
+
+				// close connection 
+				DB::connect()->close();			
+			break;
+			
 			//Update case
 			case "update":
 				$results = DB::connect()->query($statement);
